@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/devoir-android-2020-EstEsc282.iml" filepath="$PROJECT_DIR$/.idea/devoir-android-2020-EstEsc282.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Projet.iml" filepath="$PROJECT_DIR$/.idea/modules/Projet.iml" group="Projet" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Projet/app" />
     </modules>
   </component>
 </project>
