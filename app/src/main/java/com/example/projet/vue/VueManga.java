@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.projet.R;
+import com.example.projet.donnee.MangaDAO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,9 +24,12 @@ public class VueManga extends AppCompatActivity {
 
     protected ListView VueMangaListe;
     protected List<HashMap<String, String>> listeManga;
+    protected MangaDAO mangaDAO;
 
     protected Intent intentionNaviguerAjouterManga;
     protected Intent intentionNaviguerModifierManga;
+
+    static final public int ACTIVITE_AJOUTER_MANGA = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,9 @@ public class VueManga extends AppCompatActivity {
         setContentView(R.layout.vue_manga);
         VueMangaListe = (ListView)findViewById(R.id.vueMangaListe);
 
-        listeManga = preparerListeLivre();
+        mangaDAO = MangaDAO.getInstance();
+        /*
+        listeManga = mangaDAO.listerManga();
 
         SimpleAdapter adapteur = new SimpleAdapter(
                 this,
@@ -43,6 +49,9 @@ public class VueManga extends AppCompatActivity {
                 new int[] {android.R.id.text1, android.R.id.text2});
 
         VueMangaListe.setAdapter(adapteur);
+        */
+
+        afficherListeManga();
 
         Button vueMangaActionAjouterManga = (Button)findViewById(R.id.vueMangaListeActionAjouterManga);
 
@@ -59,7 +68,8 @@ public class VueManga extends AppCompatActivity {
                                 Toast.LENGTH_SHORT);
                         message.show();
                         */
-                        startActivity(intentionNaviguerAjouterManga);
+                        //startActivity(intentionNaviguerAjouterManga);
+                        startActivityForResult(intentionNaviguerAjouterManga, ACTIVITE_AJOUTER_MANGA);
                     }
                 }
         );
@@ -91,7 +101,29 @@ public class VueManga extends AppCompatActivity {
         );
     }
 
-    public List<HashMap<String, String>> preparerListeLivre() {
+    protected void onActivityResult(int activite, int resultat, Intent donnees){
+        super.onActivityResult(activite, resultat, donnees);
+        switch (activite){
+            case ACTIVITE_AJOUTER_MANGA:
+                afficherListeManga();
+                break;
+        }
+    }
+
+    public void afficherListeManga(){
+        listeManga = mangaDAO.listerManga();
+
+        SimpleAdapter adapter = new SimpleAdapter(
+                this,
+                listeManga,
+                android.R.layout.two_line_list_item,
+                new String[] {"titreFr - titreJp","auteur - studio"},
+                new int[] {android.R.id.text1, android.R.id.text2});
+        VueMangaListe.setAdapter(adapter);
+    }
+
+/*
+    public List<HashMap<String, String>> preparerListeManga() {
         List<HashMap<String,String>> listeManga = new ArrayList<HashMap<String,String>>();
 
         HashMap<String,String> manga;
@@ -112,5 +144,5 @@ public class VueManga extends AppCompatActivity {
         listeManga.add(manga);
 
         return listeManga;
-    }
+    }*/
 }
