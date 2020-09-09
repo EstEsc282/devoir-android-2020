@@ -25,6 +25,7 @@ public class VueManga extends AppCompatActivity {
     protected List<HashMap<String, String>> listeManga;
 
     protected Intent intentionNaviguerAjouterManga;
+    protected Intent intentionNaviguerModifierManga;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,9 @@ public class VueManga extends AppCompatActivity {
                     }
                 }
         );
+
+        intentionNaviguerModifierManga = new Intent(this,VueModifierManga.class);
+
         VueMangaListe.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
@@ -75,11 +79,13 @@ public class VueManga extends AppCompatActivity {
                         HashMap<String,String> manga =
                                 (HashMap<String,String>)
                                         VueMangaListe.getItemAtPosition((int)positionItem);
-
+                        /*
                         Toast message = Toast.makeText(getApplicationContext(),
                                 "Position " + positionItem + " titres " + manga.get("titreFr - titreJp"),
                                 Toast.LENGTH_SHORT);
                         message.show();
+                        */
+                        startActivity(intentionNaviguerModifierManga);
                     }
                 }
         );

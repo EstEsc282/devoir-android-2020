@@ -5,21 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.projet.R;
 
-public class VueAjouterManga extends AppCompatActivity {
+public class VueModifierManga extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vue_ajouter_manga);
+        setContentView(R.layout.vue_modifier_manga);
 
+        Button vueModifierMangaActionAnnuler = (Button)findViewById(R.id.vueModifierMangaActionAnnuler);
 
-        Button vueAjouterMangaActionAnnuler = (Button)findViewById(R.id.vueAjouterMangaActionAnnuler);
-
-        vueAjouterMangaActionAnnuler.setOnClickListener(
+        vueModifierMangaActionAnnuler.setOnClickListener(
 
                 new View.OnClickListener() {
 

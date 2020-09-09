@@ -4,27 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vue.VueAjouterManga">
+    tools:context=".vue.VueModifierManga">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="275dp"
         android:layout_height="50dp"
-        android:text="Ajouter manga"
-        android:textAllCaps="false"
-        android:textIsSelectable="false"
+        android:text="Modifier manga"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/vueAjouterMangaActionAnnuler"
+        android:id="@+id/vueModifierMangaActionAnnuler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
-        android:layout_marginBottom="4dp"
         android:text="Annuler"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -45,10 +42,10 @@
         android:layout_marginTop="20dp"
         android:text="Auteur - Studio"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vueAjouterMangaChampTitres" />
+        app:layout_constraintTop_toBottomOf="@+id/vueModifierMangaChampTitres" />
 
     <EditText
-        android:id="@+id/vueAjouterMangaChampTitres"
+        android:id="@+id/vueModifierMangaChampTitres"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -58,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/vueAjouterMangaChampAuteurStudio"
+        android:id="@+id/vueModifierMangaChampAuteurStudio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -68,13 +65,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/vueAjouterMangaActionAjouter"
+        android:id="@+id/vueModifierMangaActionAjouter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="4dp"
-        android:text="Ajouter"
+        android:text="Modifier"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

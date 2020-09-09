@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".vue.VueAjouterManga"></activity>
+        <activity android:name=".vue.VueModifierManga"></activity>
+        <activity android:name=".vue.VueAjouterManga" />
         <activity android:name=".vue.VueManga">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
