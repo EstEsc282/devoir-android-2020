@@ -11,8 +11,9 @@
         android:layout_width="407dp"
         android:layout_height="660dp"
         app:layout_constraintBottom_toTopOf="@+id/vueMangaListeActionAjouterManga"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="4dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/vueMangaListeActionAjouterManga"

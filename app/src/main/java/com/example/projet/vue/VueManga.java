@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.projet.R;
 import com.example.projet.donnee.MangaDAO;
+import com.example.projet.modele.Manga;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +24,8 @@ import static android.widget.Toast.makeText;
 public class VueManga extends AppCompatActivity {
 
     protected ListView VueMangaListe;
-    protected List<HashMap<String, String>> listeManga;
+    //protected List<HashMap<String, String>> listeManga;
+    protected List<Manga> listeManga;
     protected MangaDAO mangaDAO;
 
     protected Intent intentionNaviguerAjouterManga;
@@ -113,9 +115,16 @@ public class VueManga extends AppCompatActivity {
     public void afficherListeManga(){
         listeManga = mangaDAO.listerManga();
 
+        List<HashMap<String,String>> listeMangaPourAfficher =
+                new ArrayList<HashMap<String, String>>();
+
+        for(Manga manga:listeManga){
+            listeMangaPourAfficher.add(manga.obtenirMangaPourAfficher());
+        }
+
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
-                listeManga,
+                listeMangaPourAfficher,
                 android.R.layout.two_line_list_item,
                 new String[] {"titreFr - titreJp","auteur - studio"},
                 new int[] {android.R.id.text1, android.R.id.text2});

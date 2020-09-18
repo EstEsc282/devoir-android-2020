@@ -1,5 +1,7 @@
 package com.example.projet.donnee;
 
+import com.example.projet.modele.Manga;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,16 +9,19 @@ import java.util.List;
 public class MangaDAO {
 
     private static MangaDAO instance = null;
-    private List<HashMap<String,String>> listeManga;
+    //private List<HashMap<String,String>> listeManga;
+    private List<Manga> listeManga;
 
     private MangaDAO(){
 
-        listeManga = new ArrayList<HashMap<String,String>>();
+        //listeManga = new ArrayList<HashMap<String,String>>();
+        listeManga = new ArrayList<Manga>();
         preparerListeManga();
     }
 
     public void preparerListeManga() {
 
+        /*
         HashMap<String,String> manga;
 
         manga = new HashMap<String,String>();
@@ -33,6 +38,11 @@ public class MangaDAO {
         manga.put("titreFr - titreJp", "Goblin Slayer - Goburin Sureiyā");
         manga.put("auteur - studio", "Kumo Kagyu - Kurokawa");
         listeManga.add(manga);
+        */
+
+        listeManga.add(new Manga("Naruto - Naruto", "Masashi Kishimoto - Kana", 0));
+        listeManga.add(new Manga("Les Chevaliers du Zodiaque - Seitōshi Seiya", "Masashi Kishimoto - Kana", 1));
+        listeManga.add(new Manga("Goblin Slayer - Goburin Sureiyā", "Kumo Kagyu - Kurokawa", 2));
 
     }
 
@@ -43,11 +53,11 @@ public class MangaDAO {
         return instance;
     }
 
-    public List<HashMap<String,String>> listerManga(){
+    public List<Manga> listerManga(){
         return listeManga;
     }
 
     public void ajouterManga(HashMap<String,String> manga){
-        listeManga.add(manga);
+        //listeManga.add(manga);
     }
 }
