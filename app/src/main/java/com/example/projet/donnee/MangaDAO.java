@@ -3,6 +3,8 @@ package com.example.projet.donnee;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.SyncStateContract;
+import android.service.autofill.OnClickAction;
 import android.util.Log;
 
 import com.example.projet.modele.Manga;
@@ -16,6 +18,7 @@ public class MangaDAO {
     private static MangaDAO instance = null;
     //private List<HashMap<String,String>> listeManga;
     private List<Manga> listeManga;
+
 
     private BDD bDD;
 
@@ -114,5 +117,8 @@ public class MangaDAO {
             if(mangaRecherche.getId() == id) return mangaRecherche;
         }
         return null;
+    }
+
+    public void modifierManga(Manga manga){
     }
 }
