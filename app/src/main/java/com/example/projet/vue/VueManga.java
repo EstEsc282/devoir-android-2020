@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.projet.R;
+import com.example.projet.donnee.BDD;
 import com.example.projet.donnee.MangaDAO;
 import com.example.projet.modele.Manga;
 
@@ -32,12 +33,16 @@ public class VueManga extends AppCompatActivity {
     protected Intent intentionNaviguerModifierManga;
 
     static final public int ACTIVITE_AJOUTER_MANGA = 1;
+    static final public int ACTIVITE_MODIFIER_MANGA = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_manga);
         VueMangaListe = (ListView)findViewById(R.id.vueMangaListe);
+
+        //Important que ce getInstance se fasse ici AVANT MangaDAO.getInstance();
+        BDD.getInstance(getApplicationContext());
 
         mangaDAO = MangaDAO.getInstance();
         /*
@@ -97,7 +102,10 @@ public class VueManga extends AppCompatActivity {
                                 Toast.LENGTH_SHORT);
                         message.show();
                         */
-                        startActivity(intentionNaviguerModifierManga);
+                        //startActivity(intentionNaviguerModifierManga);
+
+                        intentionNaviguerModifierManga.putExtra("id", manga.get("id"));
+                        startActivityForResult(intentionNaviguerModifierManga, ACTIVITE_MODIFIER_MANGA);
                     }
                 }
         );

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.projet.R;
 import com.example.projet.donnee.MangaDAO;
+import com.example.projet.modele.Manga;
 
 import java.util.HashMap;
 
@@ -73,12 +74,19 @@ public class VueAjouterManga extends AppCompatActivity {
     }
 
     private void enregistrerManga() {
-
+        /*
         HashMap<String,String> manga;
 
         manga = new HashMap<String ,String>();
         manga.put("titreFr - titreJp", vueAjouterMangaChampTitres.getText().toString());
         manga.put("auteur - studio", vueAjouterMangaChampAuteurStudio.getText().toString());
+
+        mangaDAO = MangaDAO.getInstance();
+        mangaDAO.ajouterManga(manga);
+        */
+
+        Manga manga = new Manga(vueAjouterMangaChampTitres.getText().toString(),
+                vueAjouterMangaChampAuteurStudio.getText().toString(),0);
 
         mangaDAO = MangaDAO.getInstance();
         mangaDAO.ajouterManga(manga);

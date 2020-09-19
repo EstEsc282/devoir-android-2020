@@ -1,5 +1,10 @@
 package com.example.projet.donnee;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
 import com.example.projet.modele.Manga;
 
 import java.util.ArrayList;
@@ -12,11 +17,15 @@ public class MangaDAO {
     //private List<HashMap<String,String>> listeManga;
     private List<Manga> listeManga;
 
+    private BDD bDD;
+
     private MangaDAO(){
+
+        this.bDD = BDD.getInstance();
 
         //listeManga = new ArrayList<HashMap<String,String>>();
         listeManga = new ArrayList<Manga>();
-        preparerListeManga();
+        //preparerListeManga();
     }
 
     public void preparerListeManga() {
@@ -53,11 +62,57 @@ public class MangaDAO {
         return instance;
     }
 
+    /*public List<Manga> listerManga(){
+        return listeManga;
+    }*/
+
     public List<Manga> listerManga(){
+        String LISTER_MANGA = "SELECT * FROM manga";
+        Cursor curseur = bDD.getReadableDatabase().rawQuery(LISTER_MANGA,null);
+        this.listeManga.clear();
+        Manga manga;
+
+        int indexId = curseur.getColumnIndex("id");
+        int indexAuteurstudio = curseur.getColumnIndex("auteurstudio");
+        int indexTitres = curseur.getColumnIndex("titres");
+
+        for(curseur.moveToFirst();!curseur.isAfterLast();curseur.moveToNext()){
+            int id = curseur.getInt(indexId);
+            String auteurstudio = curseur.getString(indexAuteurstudio);
+            String titres = curseur.getString(indexTitres);
+            manga = new Manga(titres, auteurstudio, id);
+            this.listeManga.add(manga);
+        }
         return listeManga;
     }
 
-    public void ajouterManga(HashMap<String,String> manga){
+    /*public void ajouterManga(HashMap<String,String> manga){
         //listeManga.add(manga);
+    }*/
+
+    public void ajouterManga(Manga manga){
+        SQLiteDatabase bDDEcriture = bDD.getWritableDatabase();
+
+        bDDEcriture.beginTransaction();
+        try{
+            ContentValues mangaEnCleValeur = new ContentValues();
+            mangaEnCleValeur.put("auteurstudio", manga.getAuteurstudio());
+            mangaEnCleValeur.put("titres", manga.getTitres());
+
+            bDDEcriture.insertOrThrow("manga", null, mangaEnCleValeur);
+            bDDEcriture.setTransactionSuccessful();
+        } catch (Exception e){
+            Log.d("MangaDAO", "Erreur en tentant d'ajouter un manga dans la base de données");
+        } finally {
+            bDDEcriture.endTransaction();
+        }
+    }
+
+    public Manga chercherMangaParId(int id){
+        listerManga();
+        for(Manga mangaRecherche : this.listeManga){
+            if(mangaRecherche.getId() == id) return mangaRecherche;
+        }
+        return null;
     }
 }
