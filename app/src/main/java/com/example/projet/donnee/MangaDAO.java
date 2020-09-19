@@ -1,17 +1,20 @@
 package com.example.projet.donnee;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.SyncStateContract;
-import android.service.autofill.OnClickAction;
 import android.util.Log;
 
-import com.example.projet.modele.Manga;
+import androidx.core.app.BundleCompat;
+import androidx.core.app.ComponentActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import com.example.projet.R;
+import com.example.projet.modele.Manga;
 
 public class MangaDAO {
 
@@ -120,5 +123,20 @@ public class MangaDAO {
     }
 
     public void modifierManga(Manga manga){
+        SQLiteDatabase bDDModif = bDD.getWritableDatabase();
+
+        bDDModif.beginTransaction();
+        try{
+            ContentValues mangaEnCleValeur = new ContentValues();
+            mangaEnCleValeur.put("auteurstudio", manga.getAuteurstudio());
+            mangaEnCleValeur.put("titres", manga.getTitres());
+
+            bDDModif.update("manga", mangaEnCleValeur, "id" + "= " + manga.getId(), null/*new String[]{String.valueOf(manga.getId())}*/);
+            bDDModif.setTransactionSuccessful();
+        } catch (Exception e){
+            Log.d("MangaDAO", "Erreur en tentant de modifier un manga dans la base de données");
+        } finally {
+            bDDModif.endTransaction();
+        }
     }
 }

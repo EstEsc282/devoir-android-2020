@@ -39,8 +39,8 @@ public class Manga {
 
     public HashMap<String,String> obtenirMangaPourAfficher() {
         HashMap<String,String> mangaPourAfficher = new HashMap<String,String>();
-        mangaPourAfficher.put("titreFr - titreJp", this.titres);
-        mangaPourAfficher.put("auteur - studio", this.auteurstudio);
+        mangaPourAfficher.put("titres", this.titres);
+        mangaPourAfficher.put("auteurstudio", this.auteurstudio);
         mangaPourAfficher.put("id","" + this.id);
         return mangaPourAfficher;
     }

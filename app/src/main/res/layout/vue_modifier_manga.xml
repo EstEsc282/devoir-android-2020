@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/vueModifierMangaChampAuteurStudio"
+        android:id="@+id/vueModifierMangaChampAuteurstudio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"

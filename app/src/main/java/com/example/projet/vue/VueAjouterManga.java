@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class VueAjouterManga extends AppCompatActivity {
 
     protected EditText vueAjouterMangaChampTitres;
-    protected EditText vueAjouterMangaChampAuteurStudio;
+    protected EditText vueAjouterMangaChampAuteurstudio;
     protected MangaDAO mangaDAO;
 
     @Override
@@ -47,7 +47,7 @@ public class VueAjouterManga extends AppCompatActivity {
         );
 
         vueAjouterMangaChampTitres = (EditText)findViewById(R.id.vueAjouterMangaChampTitres);
-        vueAjouterMangaChampAuteurStudio = (EditText)findViewById(R.id.vueAjouterMangaChampAuteurStudio);
+        vueAjouterMangaChampAuteurstudio = (EditText)findViewById(R.id.vueAjouterMangaChampAuteurstudio);
 
         Button vueAjouterMangaActionAjouter = (Button)findViewById(R.id.vueAjouterMangaActionAjouter);
 
@@ -86,7 +86,7 @@ public class VueAjouterManga extends AppCompatActivity {
         */
 
         Manga manga = new Manga(vueAjouterMangaChampTitres.getText().toString(),
-                vueAjouterMangaChampAuteurStudio.getText().toString(),0);
+                vueAjouterMangaChampAuteurstudio.getText().toString(),0);
 
         mangaDAO = MangaDAO.getInstance();
         mangaDAO.ajouterManga(manga);

@@ -1,6 +1,5 @@
 package com.example.projet.donnee;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -22,7 +21,7 @@ public class BDD extends SQLiteOpenHelper{
     }
 
     public BDD(Context contexte){
-        super(contexte, "bibliotheque", null, 1);
+        super(contexte, "bbibliomanga", null, 1);
     }
 
     @Override

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.projet.R;
 import com.example.projet.donnee.MangaDAO;
@@ -50,8 +49,8 @@ public class VueModifierManga extends AppCompatActivity {
         mangaDAO = MangaDAO.getInstance();
         manga = mangaDAO.chercherMangaParId(id);
 
-        vueModifierMangaChampTitres = (EditText)findViewById(R.id.vueAjouterMangaChampTitres);
-        vueModifierMangaChampAuteurstudio = (EditText)findViewById(R.id.vueAjouterMangaChampAuteurStudio);
+        vueModifierMangaChampTitres = (EditText)findViewById(R.id.vueModifierMangaChampTitres);
+        vueModifierMangaChampAuteurstudio = (EditText)findViewById(R.id.vueModifierMangaChampAuteurstudio);
         vueModifierMangaChampTitres.setText(manga.getTitres());
         vueModifierMangaChampAuteurstudio.setText(manga.getAuteurstudio());
 
@@ -61,14 +60,14 @@ public class VueModifierManga extends AppCompatActivity {
                 new View.OnClickListener(){
 
                     public void onClick(View arg0) {
-
+/*
                         Toast message = Toast.makeText(
                                 getApplicationContext(),
                                 "Champ titres:"+vueModifierMangaChampTitres.getText().toString()+
                                         " Champ auteur et studio:"+vueModifierMangaChampAuteurstudio.getText().toString(),
                                 Toast.LENGTH_SHORT);
                         message.show();
-
+*/
                         enregistrerManga();
                         naviguerRetourManga();
                     }
