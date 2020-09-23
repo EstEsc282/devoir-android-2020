@@ -32,7 +32,7 @@ public class BDD extends SQLiteOpenHelper{
 
     @Override
     public void onOpen(SQLiteDatabase db){
-/*
+
         String DELETE = "delete from manga where 1 = 1";
         db.execSQL(DELETE);
 
@@ -43,7 +43,7 @@ public class BDD extends SQLiteOpenHelper{
         db.execSQL(INSERT_1);
         db.execSQL(INSERT_2);
         db.execSQL(INSERT_3);
-*/
+
 
     }
 

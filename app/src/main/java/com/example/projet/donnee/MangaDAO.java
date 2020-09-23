@@ -139,4 +139,21 @@ public class MangaDAO {
             bDDModif.endTransaction();
         }
     }
+    public void alerteManga(Manga manga){
+        SQLiteDatabase bDDAl = bDD.getWritableDatabase();
+
+        bDDAl.beginTransaction();
+        try{
+            ContentValues mangaEnCleValeur = new ContentValues();
+            mangaEnCleValeur.put("auteurstudio", manga.getAuteurstudio());
+            mangaEnCleValeur.put("titres", manga.getTitres());
+
+            bDDAl.insertOrThrow("manga", null, mangaEnCleValeur);
+            bDDAl.setTransactionSuccessful();
+        } catch (Exception e){
+            Log.d("MangaDAO", "Erreur en tentant de modifier un manga dans la base de données");
+        } finally {
+            bDDAl.endTransaction();
+        }
+    }
 }
